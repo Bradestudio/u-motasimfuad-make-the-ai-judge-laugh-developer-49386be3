@@ -20,7 +20,8 @@ MAX_CHARS = 200
 
 
 def validate(text: str) -> str:
-    """Enforce the gate: 1-200 code points, one line, not whitespace-only."""
+    """Enforce the gate: 1-200 code points, one line, no control
+    characters, not whitespace-only."""
     if not text or not text.strip():
         raise ValueError("excuse must not be empty or whitespace-only")
     if len(text) > MAX_CHARS:
@@ -29,6 +30,8 @@ def validate(text: str) -> str:
         )
     if "\n" in text or "\r" in text:
         raise ValueError("excuse must be a single line")
+    if any(ord(ch) < 0x20 for ch in text):
+        raise ValueError("excuse must not contain control characters")
     return text
 
 

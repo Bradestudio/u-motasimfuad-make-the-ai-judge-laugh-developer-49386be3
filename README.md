@@ -6,7 +6,7 @@
 
 Entrants write one funny single-line excuse a developer gives when code breaks in production, under 200 characters. A house judge model reads the excuses two at a time in private blind rounds and keeps the one that lands the bigger laugh, so the line that wins most often takes first place. Free to enter, and a single good line is all it takes.
 
-The entry is a tiny stdlib-only Python program (`main.py`). It validates one excuse line — 1–200 characters, a single line, not whitespace-only — then writes it atomically to `/output/entry.txt` and reads it back byte-for-byte to prove the write.
+The entry is a tiny stdlib-only Python program (`main.py`). It validates one excuse line — 1–200 characters, a single line, no control characters, not whitespace-only — then writes it atomically to `/output/entry.txt` and reads it back byte-for-byte to prove the write.
 
 > Production crashed because my code finally met real users, panicked, and did exactly what I do in meetings — froze and said nothing.
 
